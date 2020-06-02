@@ -1,0 +1,37 @@
+@import 'mixins.scss';
+@import 'variables.scss';
+
+.excel__header{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    height: $headerHeight;
+    padding: 5px 5px;
+    & .input{
+        min-width: 50px;
+        height: 17px;
+        outline: none;
+        padding: 12px 5px;
+        border: 1px solid transparent;
+        &:hover{
+            outline: none;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+        }
+    }
+}
+
+.header__buttons{
+    display: flex;
+    flex-basis: 6%;
+    justify-content: space-around;
+
+   .button{
+       @include Button(red)
+   }
+
+}

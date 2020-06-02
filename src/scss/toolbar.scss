@@ -1,0 +1,17 @@
+@import 'mixins.scss';
+@import 'variables.scss';
+
+.excel__toolbar{
+    position: fixed;
+    display: flex;
+    padding: 5px 5px;
+    left: 0;
+    right: 0;
+    top: $headerHeight;
+    height: $toolbarHeight;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    .button{
+        @include Button(grey);
+    }
+}
