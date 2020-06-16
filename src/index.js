@@ -1,9 +1,12 @@
-import module from './module'
-import './scss/index.scss'
-console.log('index.js')
+import Excel from './components/excel/Excel';
+import '../src/scss/index.scss';
+import Formula from './components/formula/Formula';
+import Header from './components/header/Header';
+import Table from './components/table/Table';
+import Toolbar from './components/toolbar/Toolbar';
 
-async function test (){
-    await Promise.resolve('test async')
-}
+const excel = new Excel('#app', {
+    components:[Header,Toolbar,Formula, Table]
+})
 
-test().then(res=>console.log(res))
+excel.render()
