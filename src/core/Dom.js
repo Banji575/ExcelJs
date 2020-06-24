@@ -25,6 +25,29 @@ class Dom {
         this.$el.removeEventListener(typeListener, callback)
     }
 
+    closest(selector){
+        return this.$el.closest(selector)
+    }
+
+    get getCoord(){
+       return this.$el.getBoundingClientRect();
+    }
+
+    css(selectors){
+        const key = Object.keys(selectors);
+        key.forEach(selector=>{
+            this.$el.style[selector] = selectors[selector]
+        })
+    }
+    findAll(selector){
+        let list;
+        return list = this.$el.querySelectorAll(selector)
+    }
+
+    getAttribute(atribute){
+        return this.$el.getAttribute(atribute)
+    }
+
     append(node){
         if(node instanceof Dom){
             node = node.$el

@@ -4,23 +4,30 @@ const CODES = {
 }
 
 function createRow(i, col) {
+    const resizer = `<div class="row-resizer" data-resize="row" ></div>`
     return `
-             <div class="row">
-                    <div class="row-info">${i ? i :''}</div>
+             <div class="row" >
+                    <div class="row-info" data-type = 'resizeble'>
+                    ${i ? i :''}
+                    ${resizer}
+                    </div>
                     <div class="row-data">${col}</div>
                 </div>
              `
 }
 
-function createCell() {
+function createCell(i) {
     return `
-        <div class="cell" contenteditable></div>
+        <div class="cell" data-cell = '${i}' contenteditable></div>
     `
 }
 
-function createColumn(col) {
+function createColumn(col,i) {
     return `
-    <div class="column">${col}</div>
+    <div class="column" data-cell = '${i}' data-type = 'resizeble'>
+    ${col}
+    <div class = "col-resizer" data-resize="col"></div>
+    </div>
     `
 }
 
@@ -39,7 +46,7 @@ const createTable = (countRows = 15) => {
     for (let i = 0; i < countRows; i++) {
         const cell = new Array(colLength)
             .fill('')
-            .map(() => createCell())
+            .map((_,index) => createCell(index))
             .join('')
         rows.push(createRow(i + 1, cell))
     }

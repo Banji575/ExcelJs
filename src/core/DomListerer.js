@@ -7,10 +7,15 @@ export default class DomListener {
         this.$root = $root
         this.listeners = listeners
     }
-    initDOMListeners() {
+    initDOMListeners = () => {
         this.listeners.forEach(el => {
             const method = createMethod(el);
-            this[method] = this[method].bind(this)
+            if(this[method]){
+                this[method] = this[method].bind(this)
+            }else{
+                throw new Error(`Provide method ${method} in component`)
+            }
+            
             this.$root.on(el, this[method])
         })
     }
